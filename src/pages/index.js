@@ -3,6 +3,7 @@ import { lazy } from 'react';
 export default {
   main: {
     HomePage: lazy(() => import('./main/HomePage/HomePage.jsx')),
+    AdminPage: lazy(() => import('./main/AdminPage/AdminPage.jsx')),
     SearchPage: lazy(() => import('./main/SearchPage/SearchPage.jsx')),
     CategoryPage: lazy(() => import('./main/CategoryPage/CategoryPage.jsx')),
   },
