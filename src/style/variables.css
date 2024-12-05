@@ -8,9 +8,12 @@
   --heading-color: #1a1a1a; /* Заголовки */
   --link-color: #1a73e8; /* Колір посилань */
   --link-hover-color: #174ea6; /* Колір посилань при наведенні */
-  --border-color: #d1d1d1; /* Колір рамок */
+  --border-color: #000000; /* Колір рамок */
   --error-color: #e63946; /* Колір для помилок */
   --success-color: #34a853; /* Колір для успішних повідомлень */
+
+  --bg-color: #222222;
+  --font-color: #f9f9f9;
 
   /* Відступи */
   --padding-small: 8px;
