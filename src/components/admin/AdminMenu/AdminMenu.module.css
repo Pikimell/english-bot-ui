@@ -14,6 +14,7 @@
 }
 
 .item {
+  cursor: pointer;
   color: var(--background-color);
   height: 50px;
   width: 100%;
