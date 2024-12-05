@@ -1,0 +1,7 @@
+.link {
+  color: var(--background-color);
+}
+
+.active {
+  color: var(--link-color);
+}

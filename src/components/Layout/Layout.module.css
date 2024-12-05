@@ -12,6 +12,7 @@
 .container {
   width: 320px;
   height: calc(100% - 60px);
+  overflow-y: auto;
 }
 
 .footer {
@@ -19,4 +20,5 @@
   border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
   background-color: var(--heading-color);
   height: 60px;
+  max-width: 500px;
 }
