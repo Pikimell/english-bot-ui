@@ -41,7 +41,7 @@ const App = () => {
         </Route>
         {/* =============================================== */}
         <Route path="/posts" element={<posts.PostsPage />}>
-          <Route path="list" element={<posts.PostsPage />} />
+          <Route path="list" element={<posts.ListPage />} />
           <Route path="create" element={<posts.CreatePage />} />
           <Route path="drafts" element={<posts.DraftsPage />} />
           <Route path=":id" element={<posts.DetailsPage />} />

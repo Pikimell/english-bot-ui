@@ -2,11 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import style from './AdminMenu.module.css';
 import { useState } from 'react';
 const items = [
-  { title: 'Пости', link: '/posts' },
-  { title: 'Групи', link: '/groups' },
-  { title: 'Користувачі', link: '/users' },
-  { title: 'Календар', link: '/schedule' },
-  { title: 'Сповіщення', link: '/notification' },
+  { title: 'Пости', link: '/posts/list' },
+  { title: 'Групи', link: '/groups/list' },
+  { title: 'Користувачі', link: '/users/list' },
+  { title: 'Календар', link: '/schedule/calendar' },
+  { title: 'Сповіщення', link: '/notification/homework' },
 ];
 
 const AdminMenu = ({}) => {
