@@ -1,2 +1,56 @@
 :root {
+  /* Кольори */
+  --primary-color: #1a73e8; /* Основний колір, наприклад, для кнопок */
+  --secondary-color: #fbbc04; /* Другорядний колір, акценти */
+  --background-color: #f9f9f9; /* Фон сайту */
+  --text-color: #333333; /* Основний текст */
+  --heading-color: #1a1a1a; /* Заголовки */
+  --link-color: #1a73e8; /* Колір посилань */
+  --link-hover-color: #174ea6; /* Колір посилань при наведенні */
+  --border-color: #d1d1d1; /* Колір рамок */
+  --error-color: #e63946; /* Колір для помилок */
+  --success-color: #34a853; /* Колір для успішних повідомлень */
+
+  /* Відступи */
+  --padding-small: 8px;
+  --padding-medium: 16px;
+  --padding-large: 24px;
+
+  --margin-small: 8px;
+  --margin-medium: 16px;
+  --margin-large: 24px;
+
+  /* Бордери */
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 16px;
+
+  --border-width: 2px;
+
+  /* Шрифти */
+  --font-family: 'Roboto', 'Arial', sans-serif;
+  --font-size-small: 14px;
+  --font-size-medium: 16px;
+  --font-size-large: 20px;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Розміри */
+  --max-width-container: 1200px;
+  --navbar-height: 60px;
+
+  /* Тіні */
+  --box-shadow-small: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-medium: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  --box-shadow-large: 0px 8px 16px rgba(0, 0, 0, 0.1);
+
+  /* Прозорості */
+  --opacity-light: 0.6;
+  --opacity-disabled: 0.4;
+  --opacity-hover: 0.8;
+
+  /* Інтерактивні стани */
+  --button-hover-bg: #165dce; /* Тло кнопки при наведенні */
+  --button-disabled-bg: #e0e0e0; /* Тло для неактивних кнопок */
 }
