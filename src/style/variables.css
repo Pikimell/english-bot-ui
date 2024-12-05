@@ -2,7 +2,8 @@
   /* Кольори */
   --primary-color: #1a73e8; /* Основний колір, наприклад, для кнопок */
   --secondary-color: #fbbc04; /* Другорядний колір, акценти */
-  --background-color: #f9f9f9; /* Фон сайту */
+  --background-color1: #f9f9f9; /* Фон сайту */
+  --background-color: #eca7a7; /* Фон сайту */
   --text-color: #333333; /* Основний текст */
   --heading-color: #1a1a1a; /* Заголовки */
   --link-color: #1a73e8; /* Колір посилань */

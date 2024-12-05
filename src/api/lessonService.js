@@ -12,8 +12,8 @@ export const getLessonById = async id => {
   return res.data;
 };
 
-export const getAllLessons = async () => {
-  const res = await axios.get(`${BASE_URL}/lessons`);
+export const getAllLessons = async params => {
+  const res = await axios.get(`${BASE_URL}/lessons`, { params });
   return res.data;
 };
 

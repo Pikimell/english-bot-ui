@@ -1,0 +1,22 @@
+.layout {
+  box-sizing: border-box;
+  width: 100vw;
+  padding: 0 var(--padding-small);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.container {
+  width: 320px;
+  height: calc(100% - 60px);
+}
+
+.footer {
+  width: 90%;
+  border-radius: var(--border-radius-medium) var(--border-radius-medium) 0 0;
+  background-color: var(--heading-color);
+  height: 60px;
+}

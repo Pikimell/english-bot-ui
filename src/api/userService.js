@@ -27,8 +27,8 @@ export const deleteUser = async id => {
   return res.data;
 };
 
-export const getAllUsers = async () => {
-  const res = await axios.get(`${BASE_URL}/users`);
+export const getAllUsers = async params => {
+  const res = await axios.get(`${BASE_URL}/users`, { params });
   return res.data;
 };
 
