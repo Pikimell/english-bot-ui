@@ -1,0 +1,2 @@
+export const ADMINS = ['433982686', '1209603468', '415702334'];
+export const SELECT_USER = '433982686';
