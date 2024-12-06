@@ -138,8 +138,8 @@ li {
 h1 {
   font-family: var(--font-family);
   font-weight: 700; /* Bold */
-  font-size: 56px;
-  line-height: 60px;
+  font-size: 36px;
+  line-height: 40px;
   letter-spacing: 2%;
   color: var(--font-color);
 }
@@ -147,7 +147,7 @@ h1 {
 h2 {
   font-family: var(--font-family);
   font-weight: 700; /* Bold */
-  font-size: 36px;
+  font-size: 28px;
   letter-spacing: 2%;
   color: var(--font-color);
 }

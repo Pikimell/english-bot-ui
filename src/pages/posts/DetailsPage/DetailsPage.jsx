@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getPostById } from '../../../api/postService';
 import MarkdownView from 'react-showdown';
 import Loading from '../../../components/custom/Loading/Loading';
+import { Flex } from 'antd';
 
 const DetailsPage = () => {
   const { id } = useParams();
@@ -22,6 +23,8 @@ const DetailsPage = () => {
     <div className={style.preview}>
       <h1 className={style.title}>{post.title}</h1>
       <MarkdownView markdown={post.body} />
+      <hr />
+      <p>{post.hashtags}</p>
     </div>
   );
 };
