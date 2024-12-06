@@ -1,15 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {};
+const initialState = {
+  items: [],
+};
 
 export const sliceGroups = createSlice({
   name: 'Groups',
   initialState,
   reducers: {
-    reducer1(state, { payload: userData }) {},
-    reducer2(state, { payload: userData }) {},
-    reducer3(state, { payload: userData }) {},
+    setGroups(state, { payload: groups }) {
+      state.items = groups;
+    },
+    addGroup(state, { payload: group }) {
+      state.items.push(group);
+    },
   },
 });
 
-export const { reducer1, reducer2, reducer3 } = sliceGroups.actions;
+export const { setGroups, addGroup } = sliceGroups.actions;
 export default sliceGroups.reducer;

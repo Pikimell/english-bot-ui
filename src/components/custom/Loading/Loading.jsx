@@ -2,10 +2,10 @@ import { Spin } from 'antd';
 import style from './Loading.module.css';
 import { useState } from 'react';
 
-const Loading = ({}) => {
+const Loading = ({ fullscreen = false }) => {
   return (
     <div className={style.loading}>
-      <Spin size="large" fullscreen={true} className={style.spinner} />
+      <Spin size="large" fullscreen={fullscreen} className={style.spinner} />
     </div>
   );
 };
