@@ -1,0 +1,6 @@
+.line {
+  color: var(--primary-color);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  width: 100%;
+}

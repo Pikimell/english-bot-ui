@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {};
+const initialState = {
+  drafts: [],
+};
 
 export const slicePosts = createSlice({
   name: 'Posts',

@@ -133,3 +133,91 @@ li {
 * {
   font-family: 'Roboto', serif;
 }
+
+/* Стилі для текстових компонентів */
+h1 {
+  font-family: var(--font-family);
+  font-weight: 700; /* Bold */
+  font-size: 56px;
+  line-height: 60px;
+  letter-spacing: 2%;
+  color: var(--font-color);
+}
+
+h2 {
+  font-family: var(--font-family);
+  font-weight: 700; /* Bold */
+  font-size: 36px;
+  letter-spacing: 2%;
+  color: var(--font-color);
+}
+
+h3 {
+  font-family: var(--font-family);
+  font-weight: 500; /* Medium */
+  font-size: 20px;
+  letter-spacing: 2%;
+  color: var(--font-color);
+}
+
+p {
+  font-family: var(--font-family);
+  font-weight: 400; /* Regular */
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 2%;
+  color: var(--font-color);
+}
+
+p.small {
+  font-family: var(--font-family);
+  font-weight: 400; /* Regular */
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 4%;
+  color: var(--font-color);
+}
+
+p.medium {
+  font-family: var(--font-family);
+  font-weight: 500; /* Medium */
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 2%;
+  color: var(--font-color);
+}
+
+.button-text {
+  font-family: var(--font-family);
+  font-weight: 500; /* Medium */
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 4%;
+  color: var(--font-color);
+}
+
+a {
+  font-family: var(--font-family);
+  font-weight: 400; /* Regular */
+  font-size: 12px;
+  text-decoration: none;
+  letter-spacing: 2%;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Стилі для списків */
+ul {
+  font-family: var(--font-family);
+  font-weight: 400; /* Regular */
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--font-color);
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: var(--margin-small);
+}

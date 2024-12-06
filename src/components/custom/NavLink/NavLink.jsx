@@ -9,8 +9,7 @@ const NavLink = ({ to, img, children }) => {
       }
       to={to}
     >
-      <div></div>
-      <p>{children}</p>
+      {children}
     </Link>
   );
 };
