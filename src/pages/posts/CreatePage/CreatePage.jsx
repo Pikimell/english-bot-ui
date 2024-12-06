@@ -6,7 +6,7 @@ import Line from '../../../components/custom/Line/Line';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUnsavedDraft } from '../../../redux/posts/selector';
 import { updateUnsavedDraft } from '../../../redux/posts/slice';
-import { createPost } from '../../../api/postService';
+import { createPost, updatePostById } from '../../../api/postService';
 
 const CreatePage = () => {
   const dispatch = useDispatch();
@@ -25,13 +25,19 @@ const CreatePage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    createPost(unsavedDraft);
-    dispatch(updateUnsavedDraft({}));
+    if (unsavedDraft._id) {
+      updatePostById(unsavedDraft._id, unsavedDraft);
+      dispatch(updateUnsavedDraft({}));
+    } else {
+      createPost(unsavedDraft);
+      dispatch(updateUnsavedDraft({}));
+    }
   };
 
   const onClearForm = () => {
     dispatch(updateUnsavedDraft({}));
   };
+
   return (
     <Flex vertical gap="20px" className={style.container}>
       <form

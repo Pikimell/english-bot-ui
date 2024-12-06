@@ -18,8 +18,8 @@ export const getPostById = async id => {
   return res.data;
 };
 
-export const getAllPosts = async () => {
-  const res = await axios.get(`${BASE_URL}/posts`);
+export const getAllPosts = async params => {
+  const res = await axios.get(`${BASE_URL}/posts`, { params });
   return res.data;
 };
 

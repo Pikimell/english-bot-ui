@@ -4,7 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import { deletePostById, updatePostById } from '../../../../api/postService';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
-import { removePost, updatePost } from '../../../../redux/posts/slice';
+import {
+  removePost,
+  updatePost,
+  updateUnsavedDraft,
+} from '../../../../redux/posts/slice';
 
 const PostItem = ({ item }) => {
   const navigate = useNavigate();
@@ -39,6 +43,10 @@ const PostItem = ({ item }) => {
   const handleOpen = () => {
     navigate(`/posts/${item._id}`);
   };
+  const handleEdit = () => {
+    dispatch(updateUnsavedDraft(item));
+    navigate(`/posts/create`);
+  };
 
   return (
     <Card className={style.item} title={item.topic}>
@@ -48,6 +56,7 @@ const PostItem = ({ item }) => {
           {!isPublished ? 'Опублікувати' : 'До чорнеток'}
         </Button>
         <Button onClick={handleOpen}>Переглянути</Button>
+        <Button onClick={handleEdit}>Редагувати</Button>
         <Button onClick={handleRemove}>Видалити</Button>
       </Flex>
     </Card>

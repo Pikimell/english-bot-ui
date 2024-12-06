@@ -1,7 +1,7 @@
 import { Menu } from 'antd';
 import style from './PostNavigation.module.css';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const items = [
   {
@@ -24,8 +24,12 @@ const items = [
   },
 ];
 
-const PostNavigation = ({}) => {
+const PostNavigation = () => {
+  const location = useLocation();
+  const activeKey = location.pathname.slice(6);
+
   const navigate = useNavigate();
+
   const handleClick = e => {
     navigate(`/posts/${e.key}`);
   };
@@ -35,7 +39,7 @@ const PostNavigation = ({}) => {
       style={{
         width: 256,
       }}
-      defaultSelectedKeys={['/list']}
+      activeKey={activeKey}
       mode="inline"
       items={items}
     />
