@@ -2,7 +2,20 @@ import axios from 'axios';
 import { SERVER_URL } from '../helpers/constants';
 const BASE_URL = SERVER_URL;
 
-export const createPost = async postData => {
+export const createPost = async ({
+  title,
+  body,
+  topic,
+  hashtags = '',
+  isPosted = false,
+}) => {
+  const postData = {
+    title,
+    body,
+    topic,
+    hashtags: hashtags.split(' '),
+    isPosted,
+  };
   const res = await axios.post(`${BASE_URL}/posts`, postData);
   return res.data;
 };
