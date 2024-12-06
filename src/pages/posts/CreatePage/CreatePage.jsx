@@ -1,8 +1,8 @@
-import { Flex, Input } from 'antd';
+import { Button, Flex, Input } from 'antd';
 import style from './CreatePage.module.css';
 import { useState } from 'react';
 import TextArea from 'antd/es/input/TextArea';
-import Markdown from 'react-markdown';
+import MarkdownView from 'react-showdown';
 import Line from '../../../components/custom/Line/Line';
 
 const CreatePage = () => {
@@ -16,11 +16,12 @@ const CreatePage = () => {
           value={content}
           onChange={e => setContent(e.target.value)}
         ></TextArea>
+        <Button>Зберегти до чорнеток</Button>
       </form>
       <Line />
       <div className={style.preview}>
-        <h2>{title}</h2>
-        <Markdown>{content}</Markdown>
+        <h1 className={style.title}>{title}</h1>
+        <MarkdownView markdown={content} />
       </div>
     </Flex>
   );

@@ -17,8 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           theme={{
             algorithm: theme.darkAlgorithm,
             token: {
-              colorPrimary: 'rgb(0, 166, 255)',
-              borderRadius: 2,
+              colorPrimary: '#1a73e8',
+              borderRadius: 5,
               colorBgContainer: '#1c1f24',
               colorBgBase: '#1c1f24',
               colorBgLayout: '#1c1f24',

@@ -25,16 +25,12 @@
 
 @media (min-width: 1024px) {
   .container {
-    width: 100vw;
-    height: calc(100% - 60px);
-    overflow-y: auto;
+    width: 1024px;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .container {
-    width: 90vw;
-    height: auto;
-    overflow-y: scroll;
+    width: 768px;
   }
 }
