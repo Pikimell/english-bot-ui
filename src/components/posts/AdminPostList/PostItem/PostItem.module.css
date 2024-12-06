@@ -1,0 +1,8 @@
+.item {
+  width: 100%;
+  cursor: pointer;
+}
+
+.controls {
+  margin: 5px 0;
+}

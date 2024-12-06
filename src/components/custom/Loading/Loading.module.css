@@ -1,0 +1,8 @@
+.loading {
+  height: 100%;
+  width: 100%;
+}
+
+.spinner {
+  color: var(--primary-color);
+}

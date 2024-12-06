@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-  drafts: [],
+  items: [],
   unsavedDraft: {},
 };
 
@@ -11,10 +11,21 @@ export const slicePosts = createSlice({
     updateUnsavedDraft(state, { payload: userData }) {
       state.unsavedDraft = userData;
     },
-    reducer2(state, { payload: userData }) {},
-    reducer3(state, { payload: userData }) {},
+    setPosts(state, { payload: userData }) {
+      state.items = userData;
+    },
+    removePost(state, { payload: postId }) {
+      state.items = state.items.filter(el => el._id !== postId);
+    },
+    updatePost(state, { payload: [postId, data] }) {
+      const itemIndex = state.items.findIndex(el => el._id === postId);
+      if (itemIndex !== -1) {
+        state.items[itemIndex] = { ...state.items[itemIndex], ...data };
+      }
+    },
   },
 });
 
-export const { updateUnsavedDraft, reducer2, reducer3 } = slicePosts.actions;
+export const { updateUnsavedDraft, setPosts, removePost, updatePost } =
+  slicePosts.actions;
 export default slicePosts.reducer;

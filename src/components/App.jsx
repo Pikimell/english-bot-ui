@@ -44,8 +44,8 @@ const App = () => {
           <Route path="list" element={<posts.ListPage />} />
           <Route path="create" element={<posts.CreatePage />} />
           <Route path="drafts" element={<posts.DraftsPage />} />
-          <Route path=":id" element={<posts.DetailsPage />} />
         </Route>
+        <Route path="/posts/:id" element={<posts.DetailsPage />} />
         {/* =============================================== */}
         <Route path="*" element={<main.HomePage />} />
         {/* =============================================== */}
