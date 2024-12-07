@@ -3,8 +3,9 @@ import { assignToGroup, getAllUsers } from '../../../api/userService';
 import style from './AddUserModal.module.css';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { updateGroupById } from '../../../api/groupService';
 
-const AddUserModal = ({ groupId, onClose }) => {
+const AddUserModal = ({ groupId, onClose, students }) => {
   const [users, setUsers] = useState([]);
   const [selectList, setSelectList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +21,9 @@ const AddUserModal = ({ groupId, onClose }) => {
     for (const id of selectList) {
       promises.push(assignToGroup(id, { groupId }));
     }
+    promises.push(
+      updateGroupById(groupId, { students: students + selectList.length }),
+    );
     const result = Promise.all(promises);
 
     toast

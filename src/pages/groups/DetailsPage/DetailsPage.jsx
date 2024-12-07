@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import style from './DetailsPage.module.css';
 import { useEffect, useState } from 'react';
 import Loading from '../../../components/custom/Loading/Loading';
-import { getGroupById } from '../../../api/groupService';
+import { getGroupById, updateGroupById } from '../../../api/groupService';
 import { assignToGroup, getAllUsers } from '../../../api/userService';
 import { Button, Flex, List, Modal } from 'antd';
 import AddUserModal from '../../../components/groups/AddUserModal/AddUserModal';
@@ -31,10 +31,12 @@ const DetailsPage = ({}) => {
       .then(() => setIsLoading(false));
   }, [id, opened]);
 
-  const handleDelete = id => {
-    assignToGroup(id, { groupId: 'null' }).then(() => {
-      setUsers(users.filter(u => u.userId !== id));
+  const handleDelete = userId => {
+    assignToGroup(userId, { groupId: 'null' }).then(() => {
+      setUsers(users.filter(u => u.userId !== userId));
     });
+    setGroup({ ...group, students: group.students - 1 });
+    updateGroupById(id, { students: group.students - 1 });
   };
   if (isLoading || !group) return <Loading />;
 
@@ -46,7 +48,7 @@ const DetailsPage = ({}) => {
             Level: <span>{group.level}</span>
           </p>
           <p>
-            Учнів: <span>{group.students}</span>
+            Учнів: <span>{users.length}</span>
           </p>
         </Flex>
 
@@ -92,7 +94,11 @@ const DetailsPage = ({}) => {
           onClose={closeModal}
           footer={null}
         >
-          <AddUserModal onClose={closeModal} groupId={id} />
+          <AddUserModal
+            onClose={closeModal}
+            groupId={id}
+            students={group.students}
+          />
         </Modal>
       )}
     </Flex>
