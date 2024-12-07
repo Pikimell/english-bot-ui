@@ -9,16 +9,22 @@ const getColumns = onOpen => {
       title: 'Рівень',
       dataIndex: 'level',
       key: 'level',
+      sorter: (a, b) => a.level.localeCompare(b.level),
+      sortDirections: ['descend'],
     },
     {
       title: 'Вартість',
       dataIndex: 'price',
       key: 'price',
+      sorter: (a, b) => a.price - b.price,
+      sortDirections: ['descend'],
     },
     {
       title: 'Учнів',
       dataIndex: 'students',
       key: 'students',
+      sorter: (a, b) => a.students - b.students,
+      sortDirections: ['descend'],
     },
     {
       title: 'Перегляд',
@@ -39,15 +45,3 @@ const GroupList = ({ groups }) => {
 };
 
 export default GroupList;
-
-/* 
-<List
-      className={style.list}
-      dataSource={groups}
-      renderItem={item => (
-        <List.Item>
-          <GroupItem item={item} />
-        </List.Item>
-      )}
-    />
-*/

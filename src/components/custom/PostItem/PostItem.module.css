@@ -1,0 +1,22 @@
+.card {
+  border: 1px solid black;
+  width: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--font-color);
+  color: var(--bg-color);
+  cursor: pointer;
+}
+
+.imageBox {
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageBox img {
+  width: 100%;
+}
+
+.footer {
+  padding: 5px 10px;
+}
