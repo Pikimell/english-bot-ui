@@ -3,8 +3,14 @@ import { SERVER_URL } from '../helpers/constants';
 const BASE_URL = SERVER_URL;
 
 export const getUser = async id => {
-  const res = await axios.get(`${BASE_URL}/users/${id}`);
-  return res.data;
+  const user = getUserFromLS(id);
+  if (user) {
+    return user;
+  } else {
+    const res = await axios.get(`${BASE_URL}/users/${id}`);
+    saveUserToLS(res.data);
+    return res.data;
+  }
 };
 
 export const createUser = async userData => {
@@ -59,3 +65,28 @@ export const removeFromGroup = async id => {
   const res = await axios.delete(`${BASE_URL}/users/${id}/group`);
   return res.data;
 };
+
+function getUserFromLS(userId) {
+  const json = localStorage.getItem(userId);
+  try {
+    const data = JSON.parse(json);
+    const { date, user } = data;
+    const diff = Date.now() - date;
+    const minute = 60 * 1000;
+    const delay = 5 * minute;
+    if (diff < delay) {
+      return user;
+    }
+  } catch {
+    return null;
+  }
+}
+
+function saveUserToLS(user) {
+  const data = {
+    date: Date.now(),
+    user,
+  };
+  const json = JSON.stringify(data);
+  localStorage.setItem(user._id, json);
+}
