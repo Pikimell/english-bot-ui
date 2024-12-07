@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+}
+
+.info {
+  color: var(--text-color);
+  padding: 10px;
+  border-radius: var(--border-radius-small);
+  width: 100%;
+  border: 1px solid black;
+}
+
+.info p {
+  font-size: large;
+  font-weight: 700;
+}
+.info span {
+  font-size: large;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.students {
+  width: 100%;
+}
+
+.item {
+  width: 100%;
+  justify-content: space-between;
+}
