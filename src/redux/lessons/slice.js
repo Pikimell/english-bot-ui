@@ -1,15 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {};
+const initialState = {
+  schedule: {},
+};
 
 export const sliceLessons = createSlice({
   name: 'Lessons',
   initialState,
   reducers: {
-    reducer1(state, { payload: userData }) {},
-    reducer2(state, { payload: userData }) {},
-    reducer3(state, { payload: userData }) {},
+    setSchedule(state, { payload: userData }) {
+      state.schedule = userData;
+    },
   },
 });
 
-export const { reducer1, reducer2, reducer3 } = sliceLessons.actions;
+export const { setSchedule, reducer2, reducer3 } = sliceLessons.actions;
 export default sliceLessons.reducer;

@@ -51,3 +51,10 @@ export function getFullName() {
   const last_name = user?.last_name || '-';
   return `${username}: ${first_name} ${last_name}`;
 }
+
+export function getName(user) {
+  const username = user?.contactInfo.username || 'anonym';
+  const first_name = user?.contactInfo.first_name || '-';
+  const last_name = user?.contactInfo.last_name || '-';
+  return `@${username}: ${first_name} ${last_name}`;
+}

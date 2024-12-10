@@ -16,6 +16,7 @@ export default {
       import('./groups/GroupListPage/GroupListPage.jsx'),
     ),
     GroupsPage: lazy(() => import('./groups/GroupsPage/GroupsPage.jsx')),
+    SchedulePage: lazy(() => import('./groups/SchedulePage/SchedulePage.jsx')),
   },
   notification: {
     AlertPage: lazy(() => import('./notification/AlertPage/AlertPage.jsx')),
@@ -51,5 +52,6 @@ export default {
     ListPage: lazy(() => import('./users/ListPage/ListPage.jsx')),
     SearchPage: lazy(() => import('./users/SearchPage/SearchPage.jsx')),
     UsersPage: lazy(() => import('./users/UsersPage/UsersPage.jsx')),
+    EditPage: lazy(() => import('./users/EditPage/EditPage.jsx')),
   },
 };

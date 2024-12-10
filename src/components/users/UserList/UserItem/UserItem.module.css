@@ -1,0 +1,22 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 270px;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.fullname {
+  width: 70%;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.level {
+  text-align: center;
+  width: 10%;
+}
+.balance {
+  width: 20%;
+  text-align: right;
+}

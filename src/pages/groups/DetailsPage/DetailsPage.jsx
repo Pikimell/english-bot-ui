@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import style from './DetailsPage.module.css';
 import { useEffect, useState } from 'react';
 import Loading from '../../../components/custom/Loading/Loading';
@@ -9,6 +9,7 @@ import AddUserModal from '../../../components/groups/AddUserModal/AddUserModal';
 import { useModal } from '../../../hooks/useModal';
 
 const DetailsPage = ({}) => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [group, setGroup] = useState({});
   const [users, setUsers] = useState([]);
@@ -31,6 +32,9 @@ const DetailsPage = ({}) => {
       .then(() => setIsLoading(false));
   }, [id, opened]);
 
+  const handleClickSchedule = () => {
+    navigate(`/groups/${id}/schedule`);
+  };
   const handleDelete = userId => {
     assignToGroup(userId, { groupId: 'null' }).then(() => {
       setUsers(users.filter(u => u.userId !== userId));
@@ -54,6 +58,9 @@ const DetailsPage = ({}) => {
 
         <p>
           Вартість: <span>{group.price}грн</span>
+        </p>
+        <p>
+          Прибуток: <span>{users.length * group.price}грн</span>
         </p>
         <p>
           Опис: <span>{group.description || 'Відсутній'}</span>
@@ -84,6 +91,7 @@ const DetailsPage = ({}) => {
 
       <Flex gap="10px" wrap className={style.controls}>
         <Button>Змінити групу</Button>
+        <Button onClick={handleClickSchedule}>Змінити Розклад</Button>
         <Button onClick={openModal}>Додати учнів</Button>
       </Flex>
 

@@ -13,8 +13,14 @@ export const sliceGroups = createSlice({
     addGroup(state, { payload: group }) {
       state.items.push(group);
     },
+    updateGroup(state, { payload: { _id, data } }) {
+      const groupIndex = state.items.findIndex(el => el._id === _id);
+      if (groupIndex >= 0) {
+        state.items[groupIndex] = { ...data };
+      }
+    },
   },
 });
 
-export const { setGroups, addGroup } = sliceGroups.actions;
+export const { setGroups, addGroup, updateGroup } = sliceGroups.actions;
 export default sliceGroups.reducer;

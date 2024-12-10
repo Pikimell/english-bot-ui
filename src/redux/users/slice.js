@@ -1,15 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {};
+const initialState = {
+  items: [],
+};
 
 export const sliceUsers = createSlice({
   name: 'Users',
   initialState,
   reducers: {
-    reducer1(state, { payload: userData }) {},
-    reducer2(state, { payload: userData }) {},
-    reducer3(state, { payload: userData }) {},
+    setUsers(state, { payload: users }) {
+      state.items = users;
+    },
+    updateUserInfo(state, { payload: { userId, data } }) {
+      const userIndex = state.items.findIndex(el => el.userId === userId);
+      if (userIndex >= 0) {
+        state.items[userIndex] = { ...data };
+      }
+    },
   },
 });
 
-export const { reducer1, reducer2, reducer3 } = sliceUsers.actions;
+export const { setUsers, updateUserInfo } = sliceUsers.actions;
 export default sliceUsers.reducer;

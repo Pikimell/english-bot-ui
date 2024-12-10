@@ -17,7 +17,7 @@ const App = () => {
         {/* =============================================== */}
         <Route path="/users" element={<users.UsersPage />}>
           <Route path="list" element={<users.ListPage />} />
-          <Route path="edit" element={<users.UsersPage />} />
+          <Route path="edit" element={<users.EditPage />} />
           <Route path="debtors" element={<users.DebtorsPage />} />
           <Route path="search" element={<users.SearchPage />} />
         </Route>
@@ -26,6 +26,7 @@ const App = () => {
           <Route path="list" element={<groups.GroupListPage />} />
           <Route path="create" element={<groups.CreateGroupPage />} />
           <Route path=":id" element={<groups.DetailsPage />} />
+          <Route path=":id/schedule" element={<groups.SchedulePage />} />
         </Route>
         {/* =============================================== */}
         <Route path="/schedule" element={<schedule.SchedulePage />}>

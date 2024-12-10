@@ -16,6 +16,10 @@ export const getAllGroups = async () => {
   const res = await axios.get(`${BASE_URL}/groups`);
   return res.data;
 };
+export const getAllGroupsSchedule = async () => {
+  const res = await axios.get(`${BASE_URL}/groups/schedule`);
+  return res.data;
+};
 
 export const updateGroupById = async (id, groupData) => {
   const res = await axios.put(`${BASE_URL}/groups/${id}`, groupData);
