@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import UserSelector from '../../../components/custom/UserSelector/UserSelector';
 import style from './EditPage.module.css';
 import { useSearchParams } from 'react-router-dom';
-import { getUser, updateUser } from '../../../api/userService';
+import { getUser, updateUser, updateUserLevel } from '../../../api/userService';
 import { Button, Flex, Input, Select } from 'antd';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
@@ -79,11 +79,15 @@ const EditPage = () => {
     newUser.balance *= 1;
 
     const promise = updateUser(selectUserId, newUser);
-    toast.promise(promise, {
-      loading: 'Зберігаємо...',
-      success: 'Дані збережено',
-      error: 'Упс( Щось пішло не так',
-    });
+    toast
+      .promise(promise, {
+        loading: 'Зберігаємо...',
+        success: 'Дані збережено',
+        error: 'Упс( Щось пішло не так',
+      })
+      .then(() => {
+        if (newUser.level) updateUserLevel(newUser.userId, newUser.level);
+      });
     setSelectUserId('none');
     formRef.current.reset();
     dispatch(updateUserInfo({ userId: selectUserId, data: newUser }));

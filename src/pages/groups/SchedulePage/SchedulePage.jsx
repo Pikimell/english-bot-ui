@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { updateGroup } from '../../../redux/groups/slice';
 import { days, daysLabel } from '../../../helpers/constants';
 
-const SchedulePage = ({}) => {
+const SchedulePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [group, setGroup] = useState({});
