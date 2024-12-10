@@ -1,3 +1,3 @@
 export const selectSchedule = s => {
-  s.lessons.schedule;
+  return s.lessons.schedule;
 };

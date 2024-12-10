@@ -8,12 +8,15 @@ import {
   updateGroupById,
 } from '../../../api/groupService';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { addGroup } from '../../../redux/groups/slice';
 
 const CreateGroupPage = () => {
+  const dispatch = useDispatch();
   const formRef = useRef();
-  const [params] = useSearchParams();
+  const [params, setParams] = useSearchParams();
   const [formData, setFormData] = useState({});
-  const { id } = params;
+  const id = params.get('id');
 
   const handleChange = e => {
     const key = e.target.name;
@@ -30,8 +33,12 @@ const CreateGroupPage = () => {
 
   const handleUpdate = () => {
     updateGroupById(id, formData);
+    setParams({});
   };
 
+  const addGroupToRedux = group => {
+    dispatch(addGroup(group));
+  };
   const handleSubmit = e => {
     e.preventDefault();
     const { price, level } = formData;
@@ -52,7 +59,8 @@ const CreateGroupPage = () => {
         success: 'Групу створенно!',
         error: 'Щось пішло не так((',
       })
-      .then(() => {
+      .then(res => {
+        addGroupToRedux(res);
         setFormData({});
         formRef.current.reset();
       });
@@ -90,7 +98,9 @@ const CreateGroupPage = () => {
           placeholder="Нотатки"
           value={formData.descriptions}
         />
-        <Button onClick={handleSubmit}>Додати групу</Button>
+        <Button onClick={handleSubmit}>
+          {id ? 'Зберегти зміни' : 'Додати групу'}
+        </Button>
       </form>
     </div>
   );

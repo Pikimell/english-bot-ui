@@ -6,6 +6,7 @@ import { setUsers } from '../redux/users/slice';
 import { setGroups } from '../redux/groups/slice';
 import { getAllGroups, getAllGroupsSchedule } from '../api/groupService';
 import { setSchedule } from '../redux/lessons/slice';
+import { days } from '../helpers/constants';
 
 export const useLoadData = () => {
   const dispatch = useDispatch();
@@ -29,6 +30,12 @@ export const useLoadData = () => {
 
   const loadUserData = async () => {
     const schedule = await getAllGroupsSchedule();
+    for (const day of Object.values(schedule)) {
+      day.sort((a, b) => {
+        return parseInt(a) - parseInt(b);
+      });
+    }
+
     dispatch(setSchedule(schedule));
   };
 };

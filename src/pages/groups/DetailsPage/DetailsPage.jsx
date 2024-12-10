@@ -2,7 +2,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import style from './DetailsPage.module.css';
 import { useEffect, useState } from 'react';
 import Loading from '../../../components/custom/Loading/Loading';
-import { getGroupById, updateGroupById } from '../../../api/groupService';
+import {
+  deleteGroupById,
+  getGroupById,
+  updateGroupById,
+} from '../../../api/groupService';
 import { assignToGroup, getAllUsers } from '../../../api/userService';
 import { Button, Flex, List, Modal } from 'antd';
 import AddUserModal from '../../../components/groups/AddUserModal/AddUserModal';
@@ -32,6 +36,9 @@ const DetailsPage = ({}) => {
       .then(() => setIsLoading(false));
   }, [id, opened]);
 
+  const handleChangeGroup = () => {
+    navigate(`/groups/create?id=${id}`);
+  };
   const handleClickSchedule = () => {
     navigate(`/groups/${id}/schedule`);
   };
@@ -41,6 +48,11 @@ const DetailsPage = ({}) => {
     });
     setGroup({ ...group, students: group.students - 1 });
     updateGroupById(id, { students: group.students - 1 });
+  };
+
+  const handleRemove = () => {
+    deleteGroupById(group._id);
+    navigate(`/groups/list`);
   };
   if (isLoading || !group) return <Loading />;
 
@@ -90,9 +102,10 @@ const DetailsPage = ({}) => {
       />
 
       <Flex gap="10px" wrap className={style.controls}>
-        <Button>Змінити групу</Button>
+        <Button onClick={handleChangeGroup}>Змінити групу</Button>
         <Button onClick={handleClickSchedule}>Змінити Розклад</Button>
         <Button onClick={openModal}>Додати учнів</Button>
+        <Button onClick={handleRemove}>Видалити групу</Button>
       </Flex>
 
       {opened && (
