@@ -94,9 +94,9 @@ const CreateGroupPage = () => {
         />
         <Input
           type="text"
-          name="descriptions"
+          name="description"
           placeholder="Нотатки"
-          value={formData.descriptions}
+          value={formData.description}
         />
         <Button onClick={handleSubmit}>
           {id ? 'Зберегти зміни' : 'Додати групу'}

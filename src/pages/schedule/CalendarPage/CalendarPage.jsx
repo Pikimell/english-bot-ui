@@ -1,8 +1,15 @@
+import { useSelector } from 'react-redux';
+import Calendar from '../../../components/schedule/Calendar/Calendar';
 import style from './CalendarPage.module.css';
-import { useState } from 'react';
+import { selectSchedule } from '../../../redux/lessons/selector';
 
-const CalendarPage = ({}) => {
-  return <div>CalendarPage</div>;
+const CalendarPage = () => {
+  const schedule = useSelector(selectSchedule);
+  return (
+    <div>
+      <Calendar data={schedule} />
+    </div>
+  );
 };
 
 export default CalendarPage;

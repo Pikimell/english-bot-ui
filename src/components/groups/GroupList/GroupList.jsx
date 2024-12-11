@@ -10,21 +10,18 @@ const getColumns = onOpen => {
       dataIndex: 'level',
       key: 'level',
       sorter: (a, b) => a.level.localeCompare(b.level),
-      sortDirections: ['descend'],
     },
     {
       title: 'Вартість',
       dataIndex: 'price',
       key: 'price',
       sorter: (a, b) => a.price - b.price,
-      sortDirections: ['descend'],
     },
     {
       title: 'Учнів',
       dataIndex: 'students',
       key: 'students',
       sorter: (a, b) => a.students - b.students,
-      sortDirections: ['descend'],
     },
     {
       title: 'Перегляд',

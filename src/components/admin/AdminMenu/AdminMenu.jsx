@@ -7,6 +7,7 @@ const items = [
   { title: 'Користувачі', link: '/users/list' },
   { title: 'Календар', link: '/schedule/calendar' },
   { title: 'Сповіщення', link: '/notification/homework' },
+  { title: 'Статистика', link: '/statistics' },
 ];
 
 const AdminMenu = ({}) => {

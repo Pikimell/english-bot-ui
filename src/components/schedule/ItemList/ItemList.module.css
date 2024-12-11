@@ -1,0 +1,15 @@
+.active * {
+  animation: blink 3s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0% {
+    color: #ffd3d3;
+  }
+  50% {
+    color: #ff8f8f;
+  }
+  100% {
+    color: #ffd3d3;
+  }
+}
