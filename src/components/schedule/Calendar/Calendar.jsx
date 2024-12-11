@@ -1,6 +1,6 @@
+import clsx from 'clsx';
 import { days } from '../../../helpers/constants';
 import style from './Calendar.module.css';
-import { useState } from 'react';
 
 function getPos(x = 1, y = 1) {
   return {
@@ -9,29 +9,65 @@ function getPos(x = 1, y = 1) {
   };
 }
 
-function getHeaders() {
-  const copy = [...Object.keys(days)];
-  copy.push(copy.shift());
-  return copy.map((el, x) => {
-    return (
-      <div style={getPos(x + 2)} key={el} className={style.block}>
-        {el}
-      </div>
-    );
+function getEmptyArray() {
+  return Array.from({ length: 16 }, (_, i) => {
+    const hour = i + 7;
+    return Array.from({ length: 8 }, (_, j) => ({
+      value: j === 0 ? hour : '',
+      type: j === 0 ? 'menu' : '',
+    }));
   });
 }
 
-function getBody(date, lessons) {
-  // const bookedList = lessons2data(lessons);
-  // return hours.map(hour => (
-  //   <tr key={hour}>
-  //     <td className="baseCol">{parseTime(hour)}</td>
-  //     {days.map((day, i) => {
-  //       const itemClass = getClass(date, i, hour, bookedList);
-  //       return <td key={day + hour} className={`time-slot ${itemClass}`}></td>;
-  //     })}
-  //   </tr>
-  // ));
+function getHeaders() {
+  const headers = Object.keys(days);
+  const reorderedHeaders = [...headers.slice(1), headers[0]];
+
+  return reorderedHeaders.map((day, x) => (
+    <div style={getPos(x + 2)} key={day} className={style.block}>
+      {day}
+    </div>
+  ));
+}
+
+function parseTime(time) {
+  const parsed = parseInt(time, 10);
+  if (isNaN(parsed)) return 0;
+  return parsed - 7;
+}
+
+function getBody(data) {
+  const grid = getEmptyArray();
+
+  for (const [day, times] of Object.entries(data)) {
+    const dayIndex = days[day];
+    const x = dayIndex === 0 ? 7 : dayIndex;
+
+    times.forEach(time => {
+      const y = parseTime(time);
+      if (grid[y] && grid[y][x]) {
+        grid[y][x] = { value: '', type: 'active' };
+      }
+    });
+  }
+
+  return grid.flatMap((row, y) => row.map((cell, x) => getBlock(x, y, cell)));
+}
+
+function getBlock(x, y, cell) {
+  const isMenu = cell.type === 'menu';
+  const isActive = cell.type === 'active';
+  const classes = clsx(
+    style.block,
+    isMenu && style.menu,
+    isActive && style.active,
+  );
+
+  return (
+    <div key={`${x}-${y}`} className={classes} style={getPos(x + 1, y + 1)}>
+      {cell.value}
+    </div>
+  );
 }
 
 const Calendar = ({ data }) => {
@@ -39,12 +75,12 @@ const Calendar = ({ data }) => {
     <div>
       <div className={style.table}>
         <div className={style.header}>
-          <div className={style.block} style={getPos(1, 0)}>
-            +
+          <div className={style.block} style={getPos(1, 1)}>
+            Дні
           </div>
           {getHeaders()}
         </div>
-        <div className={style.body}></div>
+        <div className={style.body}>{getBody(data)}</div>
       </div>
     </div>
   );

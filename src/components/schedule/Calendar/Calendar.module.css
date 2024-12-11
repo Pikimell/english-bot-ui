@@ -1,29 +1,53 @@
 .table {
-  min-height: 500px;
-  min-width: 300px;
+  display: grid;
+  grid-template-rows: auto 1fr; /* Верхній ряд (header) та решта (body) */
+  width: 300px; /* Ширина фіксована для кращого контролю */
+  margin: 10px;
   border: 3px solid var(--primary-color);
   border-radius: var(--border-radius-medium);
 }
+
 .header {
-  border: 1px solid black;
   display: grid;
-  grid-template-columns: repeat(auto-fit);
+  grid-template-columns: repeat(8, 1fr); /* 8 колонок для днів тижня */
   align-items: center;
+  justify-items: center;
   background-color: #2f2f2f;
+  border: 1px solid black;
 }
+
 .body {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr); /* 8 колонок для часу + дні */
+  grid-auto-rows: 1fr; /* Автоматична висота для всіх рядків */
+  background-color: #fff;
+  min-height: 100%;
 }
 
 .block {
-  text-align: center;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 0;
   margin: 0;
   border: 1px solid black;
+  height: 25px;
+  width: 100%;
+}
+
+.block.menu {
+  background-color: #2f2f2f;
+  color: white;
+  font-weight: bold;
 }
 
 .block.active {
   background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
 }
+
 .block.empty {
   background-color: white;
 }
