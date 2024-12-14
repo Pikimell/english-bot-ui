@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { updateGroup } from '../../../redux/groups/slice';
 import { days, daysLabel } from '../../../helpers/constants';
+import { v4 as getId } from 'uuid';
 
 const SchedulePage = () => {
   const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const SchedulePage = () => {
       return;
     }
 
-    const newSchedule = [...schedule, { day, time }]
+    const newSchedule = [...schedule, { day, time, id: getId() }]
       .sort((a, b) => {
         return parseInt(a.time) - parseInt(b.time);
       })

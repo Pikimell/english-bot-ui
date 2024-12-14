@@ -1,0 +1,61 @@
+.lesson {
+  background-color: var(--bg-color);
+  margin: 15px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--primary-color);
+  width: 263px;
+}
+
+.header {
+  font-size: xx-large;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid var(--primary-color);
+  cursor: pointer;
+}
+
+.header > p {
+  font-size: x-large;
+  padding: 10px;
+  text-align: center;
+}
+.header p:first-child {
+  border-right: 2px solid var(--primary-color);
+  width: 100%;
+}
+.header p:last-child {
+  width: fit-content;
+}
+
+.body {
+  padding: 15px;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.body > p {
+  margin: 2px 0;
+}
+
+.body .button {
+  font-size: 15px;
+  margin: 10px 0 0 0;
+  padding: 10px;
+  width: 100%;
+}
+
+.lesson.active {
+  box-shadow: 0px 0px 10px 5px rgba(119, 0, 255, 0.448);
+  animation: color-pulse 1s infinite alternate;
+}
+
+@keyframes color-pulse {
+  0% {
+    box-shadow: 0px 0px 15px 7px rgba(255, 0, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0px 0px 10px 5px rgba(255, 0, 0, 0.3);
+  }
+}

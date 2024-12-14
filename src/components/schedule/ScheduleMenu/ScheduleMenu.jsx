@@ -1,7 +1,5 @@
 import { Menu } from 'antd';
-import style from './ScheduleMenu.module.css';
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
   {
@@ -9,16 +7,16 @@ const items = [
     label: 'Розклад заннятть',
     children: [
       {
-        key: 'list',
-        label: 'У вигляді списку',
+        key: 'block',
+        label: 'У вигляді блоків',
       },
       {
         key: 'calendar',
         label: 'У вигляді календаря',
       },
       {
-        key: 'block',
-        label: 'У вигляді блоків',
+        key: 'list',
+        label: 'У вигляді списку',
       },
     ],
   },
@@ -30,6 +28,7 @@ const ScheduleMenu = () => {
   const handleClick = e => {
     navigate(`/schedule/${e.key}`);
   };
+
   return (
     <Menu
       onClick={handleClick}
