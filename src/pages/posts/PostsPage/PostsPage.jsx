@@ -2,11 +2,16 @@ import { Outlet } from 'react-router-dom';
 import PostNavigation from '../../../components/posts/PostNavigation/PostNavigation';
 import style from './PostsPage.module.css';
 import { useState } from 'react';
+import BackButton from '../../../components/custom/BackButton/BackButton';
+import { Flex } from 'antd';
 
 const PostsPage = ({}) => {
   return (
     <div className={style.page + ' page'}>
-      <PostNavigation />
+      <Flex gap="5px">
+        <BackButton />
+        <PostNavigation />
+      </Flex>
       <Outlet />
     </div>
   );
