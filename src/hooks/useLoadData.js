@@ -6,7 +6,6 @@ import { setUsers } from '../redux/users/slice';
 import { setGroups } from '../redux/groups/slice';
 import { getAllGroups, getAllGroupsSchedule } from '../api/groupService';
 import { setSchedule } from '../redux/lessons/slice';
-import { days } from '../helpers/constants';
 
 export const useLoadData = () => {
   const dispatch = useDispatch();
