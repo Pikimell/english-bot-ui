@@ -1,21 +1,21 @@
-import { Button, Table } from 'antd';
+import { Button, Table, Tooltip } from 'antd';
 import style from './GroupList.module.css';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const getColumns = onOpen => {
   return [
     {
       title: 'Рівень',
-      dataIndex: 'level',
+      dataIndex: '',
       key: 'level',
       sorter: (a, b) => a.level.localeCompare(b.level),
-    },
-    {
-      title: 'Вартість',
-      dataIndex: 'price',
-      key: 'price',
-      sorter: (a, b) => a.price - b.price,
+      render: el => {
+        return (
+          <Tooltip placement="topCenter" title={el.description}>
+            {el.level}
+          </Tooltip>
+        );
+      },
     },
     {
       title: 'Учнів',

@@ -36,6 +36,10 @@ export const deleteLessonById = async id => {
   const res = await axios.delete(`${BASE_URL}/lessons/${id}`);
   return res.data;
 };
+export const deleteLesson = async id => {
+  const res = await axios.delete(`${BASE_URL}/lessons/user/${id}`);
+  return res.data;
+};
 
 export const markAttendance = async (id, attendanceData) => {
   const res = await axios.patch(

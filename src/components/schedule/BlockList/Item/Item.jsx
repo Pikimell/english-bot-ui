@@ -3,12 +3,13 @@ import { days, daysLabel } from '../../../../helpers/constants';
 import style from './Item.module.css';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { getTimeZone } from '../../../../helpers/convertData';
 
 const Item = ({ group, lesson }) => {
   const currentDay = new Date().getDay();
   const day = days[lesson.day];
   const isCurrentDay = currentDay === day;
-  const time = parseInt(lesson.time);
+  const time = parseInt(lesson.time) + +getTimeZone();
   const classes = clsx(style.lesson, isCurrentDay && style.active);
 
   const handleCalendar = () => {

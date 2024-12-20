@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { Flex, List } from 'antd';
 import { days, daysLabel } from '../../../helpers/constants';
 import clsx from 'clsx';
+import { getTimeZone } from '../../../helpers/convertData';
 
 const ItemList = ({ data = {} }) => {
   const items = useMemo(() => {
@@ -29,7 +30,7 @@ const ItemList = ({ data = {} }) => {
         return (
           <List.Item className={classes}>
             <Flex style={{ width: '100%' }} gap="10px" justify="space-between">
-              <p>{el.day}</p>-<p>{el.time}</p>
+              <p>{el.day}</p>-<p>{parseInt(el.time) + getTimeZone()}:00</p>
             </Flex>
           </List.Item>
         );

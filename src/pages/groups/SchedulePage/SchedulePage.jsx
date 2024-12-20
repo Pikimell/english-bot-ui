@@ -11,6 +11,7 @@ import { updateGroup } from '../../../redux/groups/slice';
 import { days, daysLabel } from '../../../helpers/constants';
 import { v4 as getId } from 'uuid';
 import { parseTime } from '../../../helpers/convertData';
+import { addSchedule, removeSchedule } from '../../../redux/lessons/slice';
 
 const SchedulePage = () => {
   const dispatch = useDispatch();
@@ -51,6 +52,7 @@ const SchedulePage = () => {
         dispatch(updateGroup({ _id: id, data: updatedGroup }));
         setGroup(updatedGroup);
       });
+    dispatch(removeSchedule({ day, time }));
   };
 
   const handleAddSchedule = () => {
@@ -79,7 +81,7 @@ const SchedulePage = () => {
         dispatch(updateGroup({ _id: id, data: updatedGroup }));
         setGroup(updatedGroup);
       });
-
+    dispatch(addSchedule({ day, time }));
     setTime();
     setDay();
   };

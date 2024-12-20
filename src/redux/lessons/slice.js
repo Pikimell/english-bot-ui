@@ -1,6 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-  schedule: {},
+  schedule: {
+    Пн: [],
+    Вт: [],
+    Ср: [],
+    Чт: [],
+    Пт: [],
+    Сб: [],
+    Нд: [],
+  },
 };
 
 export const sliceLessons = createSlice({
@@ -10,8 +18,20 @@ export const sliceLessons = createSlice({
     setSchedule(state, { payload: userData }) {
       state.schedule = userData;
     },
+    addSchedule(state, { payload: lesson }) {
+      if (!state.schedule[lesson.day]) {
+        state.schedule[lesson.day] = [];
+      }
+      state.schedule[lesson.day].push(lesson.time);
+    },
+    removeSchedule(state, { payload: lesson }) {
+      state.schedule[lesson.day] = state.schedule[lesson.day].filter(
+        el => el !== lesson.time,
+      );
+    },
   },
 });
 
-export const { setSchedule, reducer2, reducer3 } = sliceLessons.actions;
+export const { setSchedule, addSchedule, removeSchedule } =
+  sliceLessons.actions;
 export default sliceLessons.reducer;

@@ -1,0 +1,15 @@
+.userList {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  gap: 5px;
+  width: 90%;
+  margin: 10px;
+  box-sizing: border-box;
+}
+
+.userBlock {
+  margin: 0 5px;
+  display: flex;
+  justify-content: space-between;
+}

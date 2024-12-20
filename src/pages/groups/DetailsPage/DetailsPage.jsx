@@ -104,12 +104,18 @@ const DetailsPage = ({}) => {
         }}
       />
 
-      <Flex gap="10px" wrap className={style.controls}>
+      <Flex
+        style={{ width: '100%' }}
+        gap="10px"
+        align="stretch"
+        vertical
+        className={style.controls}
+      >
+        <Button onClick={handleHomeWork}>Надіслати ДЗ</Button>
         <Button onClick={handleChangeGroup}>Змінити групу</Button>
         <Button onClick={handleClickSchedule}>Змінити Розклад</Button>
         <Button onClick={openModal}>Додати учнів</Button>
         <Button onClick={handleRemove}>Видалити групу</Button>
-        <Button onClick={handleHomeWork}>Надіслати ДЗ</Button>
       </Flex>
 
       {opened && (

@@ -18,6 +18,14 @@ const items = [
         key: 'list',
         label: 'У вигляді списку',
       },
+      {
+        key: 'visit-log',
+        label: 'Журнал відвідуваннь',
+      },
+      {
+        key: 'absentee-log',
+        label: 'Відмітити відсутніх',
+      },
     ],
   },
 ];

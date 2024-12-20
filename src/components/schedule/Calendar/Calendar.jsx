@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import { days } from '../../../helpers/constants';
 import style from './Calendar.module.css';
+import { getTimeZone } from '../../../helpers/convertData';
 
 function getPos(x = 1, y = 1) {
   return {
@@ -33,7 +34,7 @@ function getHeaders() {
 function parseTime(time) {
   const parsed = parseInt(time, 10);
   if (isNaN(parsed)) return 0;
-  return parsed - 7;
+  return parsed - 7 + +getTimeZone();
 }
 
 function getBody(data) {
