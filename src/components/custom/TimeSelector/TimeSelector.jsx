@@ -13,7 +13,7 @@ const getBlockedTime = (schedule = {}, day) => {
 };
 const generateTimeOptions = blockedTime => {
   const arr = [];
-  for (let i = 7; i <= 23; i++) {
+  for (let i = 5; i <= 21; i++) {
     const time = i.toString().padStart(2, '0');
     arr.push({
       value: `${time}:00`,

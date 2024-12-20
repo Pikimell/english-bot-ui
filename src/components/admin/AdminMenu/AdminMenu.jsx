@@ -6,6 +6,7 @@ const items = [
   { title: 'Групи', link: '/groups/list' },
   { title: 'Користувачі', link: '/users/list' },
   { title: 'Календар', link: '/schedule/calendar' },
+  { title: 'Тарифи', link: '/plan/list' },
   { title: 'Сповіщення', link: '/notification/homework' },
   { title: 'Статистика', link: '/statistics' },
 ];

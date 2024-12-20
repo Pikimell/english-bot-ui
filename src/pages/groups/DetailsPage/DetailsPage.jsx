@@ -54,6 +54,9 @@ const DetailsPage = ({}) => {
     deleteGroupById(group._id);
     navigate(`/groups/list`);
   };
+  const handleHomeWork = () => {
+    navigate(`/notification/homework?groupId=${group._id}`);
+  };
   if (isLoading || !group) return <Loading />;
 
   return (
@@ -106,6 +109,7 @@ const DetailsPage = ({}) => {
         <Button onClick={handleClickSchedule}>Змінити Розклад</Button>
         <Button onClick={openModal}>Додати учнів</Button>
         <Button onClick={handleRemove}>Видалити групу</Button>
+        <Button onClick={handleHomeWork}>Надіслати ДЗ</Button>
       </Flex>
 
       {opened && (

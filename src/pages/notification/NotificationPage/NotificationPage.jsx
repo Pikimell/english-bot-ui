@@ -1,10 +1,16 @@
 import { Outlet } from 'react-router-dom';
 import style from './NotificationPage.module.css';
-import { useState } from 'react';
+import { Flex } from 'antd';
+import BackButton from '../../../components/custom/BackButton/BackButton';
+import NotificationMenu from '../../../components/notification/NotificationMenu/NotificationMenu';
 
-const NotificationPage = ({}) => {
+const NotificationPage = () => {
   return (
-    <div>
+    <div className={style.page + ' page'}>
+      <Flex gap="5px">
+        <BackButton />
+        <NotificationMenu />
+      </Flex>
       <Outlet />
     </div>
   );

@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { updateGroup } from '../../../redux/groups/slice';
 import { days, daysLabel } from '../../../helpers/constants';
 import { v4 as getId } from 'uuid';
+import { parseTime } from '../../../helpers/convertData';
 
 const SchedulePage = () => {
   const dispatch = useDispatch();
@@ -97,7 +98,7 @@ const SchedulePage = () => {
                 justify="space-between"
               >
                 <div>{daysLabel[el.day]}</div>
-                <div>{el.time}</div>
+                <div>{parseTime(el.time)}:00</div>
                 <Button onClick={() => handleRemoveSchedule(el.day, el.time)}>
                   Видалити
                 </Button>

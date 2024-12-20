@@ -9,8 +9,7 @@ export function date2str(date) {
 
 export function parseTime(hour) {
   hour = parseInt(hour);
-  hour -= 2;
-  hour += window.USER_TIME ?? 2;
+  hour += getTimeZone();
   if (hour < 0) hour += 24;
   if (hour >= 24) hour -= 24;
   hour = hour.toString().padStart(2, '0');
