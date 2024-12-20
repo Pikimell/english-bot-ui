@@ -4,7 +4,14 @@ export function date2str(date) {
   const x = date.getDate();
   const y = date.getMonth() + 1;
   const z = date.getFullYear();
-  return `${y}/${x}/${z}`;
+  return `${x.toString().padStart(2, '0')}.${y
+    .toString()
+    .padStart(2, '0')}.${z}`;
+}
+export function time2str(date) {
+  if (!(date instanceof Date)) return date;
+  const hours = date.getHours() + getTimeZone();
+  return `${hours.toString().padStart(2, '0')}:00`;
 }
 
 export function parseTime(hour) {

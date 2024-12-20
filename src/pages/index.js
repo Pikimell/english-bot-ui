@@ -38,6 +38,9 @@ export default {
   schedule: {
     BlocksPage: lazy(() => import('./schedule/BlocksPage/BlocksPage.jsx')),
     VisitPage: lazy(() => import('./schedule/VisitPage/VisitPage.jsx')),
+    AbsenteePage: lazy(() =>
+      import('./schedule/AbsenteePage/AbsenteePage.jsx'),
+    ),
     CalendarPage: lazy(() =>
       import('./schedule/CalendarPage/CalendarPage.jsx'),
     ),

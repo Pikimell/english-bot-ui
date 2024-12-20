@@ -6,6 +6,7 @@ import { setUsers } from '../redux/users/slice';
 import { setGroups } from '../redux/groups/slice';
 import { getAllGroups, getAllGroupsSchedule } from '../api/groupService';
 import { setSchedule } from '../redux/lessons/slice';
+import { fetchLessons } from '../redux/lessons/operation';
 
 export const useLoadData = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ export const useLoadData = () => {
     const usersP = getAllUsers();
     const groupsP = getAllGroups();
     const promises = [usersP, groupsP];
-
+    dispatch(fetchLessons());
     const [users, groups] = await Promise.all(promises);
     dispatch(setUsers(users));
     dispatch(setGroups(groups));

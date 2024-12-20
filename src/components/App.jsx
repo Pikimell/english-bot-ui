@@ -33,6 +33,7 @@ const App = () => {
           <Route path="list" element={<schedule.ScheduleListPage />} />
           <Route path="calendar" element={<schedule.CalendarPage />} />
           <Route path="block" element={<schedule.BlocksPage />} />
+          <Route path="absentee-log" element={<schedule.AbsenteePage />} />
           <Route path="visit-log" element={<schedule.VisitPage />} />
         </Route>
         {/* =============================================== */}
