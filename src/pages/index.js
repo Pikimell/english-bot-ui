@@ -35,6 +35,11 @@ export default {
     PostsPage: lazy(() => import('./posts/PostsPage/PostsPage.jsx')),
     ListPage: lazy(() => import('./posts/ListPage/ListPage.jsx')),
   },
+  plans: {
+    CreatePage: lazy(() => import('./plans/CreatePage/CreatePage.jsx')),
+    PlansPage: lazy(() => import('./plans/PlansPage/PlansPage.jsx')),
+    ListPage: lazy(() => import('./plans/ListPage/ListPage.jsx')),
+  },
   schedule: {
     BlocksPage: lazy(() => import('./schedule/BlocksPage/BlocksPage.jsx')),
     VisitPage: lazy(() => import('./schedule/VisitPage/VisitPage.jsx')),

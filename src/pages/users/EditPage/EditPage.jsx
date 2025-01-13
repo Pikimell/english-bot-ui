@@ -3,7 +3,7 @@ import UserSelector from '../../../components/custom/UserSelector/UserSelector';
 import style from './EditPage.module.css';
 import { useSearchParams } from 'react-router-dom';
 import { getUser, updateUser, updateUserLevel } from '../../../api/userService';
-import { Button, Flex, Input, Select } from 'antd';
+import { Button, Flex, Input, InputNumber, Select } from 'antd';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { updateUserInfo } from '../../../redux/users/slice';
@@ -15,6 +15,7 @@ const EditPage = () => {
   const [params] = useSearchParams();
   const [selectUserId, setSelectUserId] = useState();
   const [user, setUser] = useState({});
+  const [level, setLevel] = useState();
   const userId = params.get('userId');
   const [money, setMoney] = useState(0);
 
@@ -24,7 +25,10 @@ const EditPage = () => {
 
   useEffect(() => {
     if (selectUserId && selectUserId !== 'none') {
-      getUser(selectUserId).then(setUser);
+      getUser(selectUserId).then(data => {
+        setUser(data);
+        setLevel(data.level);
+      });
       return;
     }
 
@@ -86,7 +90,10 @@ const EditPage = () => {
         error: 'Упс( Щось пішло не так',
       })
       .then(() => {
-        if (newUser.level) updateUserLevel(newUser.userId, newUser.level);
+        console.log(newUser.level, level);
+
+        if (newUser.level !== level)
+          updateUserLevel(newUser.userId, newUser.level);
       });
     setSelectUserId('none');
     formRef.current.reset();
@@ -130,19 +137,18 @@ const EditPage = () => {
         />
         <Flex>
           <Input
-            style={{ width: '100%' }}
+            type="number"
             addonBefore="balance"
             name="balance"
             value={user.balance}
             onChange={handleChange}
-            type="number"
             min={0}
             step={50}
           />
           <Input
+            type="number"
             onChange={handleChangeBalance}
             addonBefore=" + "
-            type="number"
             min={0}
             value={money}
           />

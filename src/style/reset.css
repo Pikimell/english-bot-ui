@@ -221,3 +221,11 @@ ul {
 li {
   margin-bottom: var(--margin-small);
 }
+
+.ant-input-number-input-wrap {
+  width: 100%;
+}
+
+.ant-input-number {
+  width: 100%;
+}

@@ -7,6 +7,10 @@ export const createPlan = async planData => {
   return res.data;
 };
 
+export const getPlanById = async id => {
+  const res = await axios.get(`${BASE_URL}/plan/${id}`);
+  return res.data;
+};
 export const getAllPlans = async () => {
   const res = await axios.get(`${BASE_URL}/plan`);
   return res.data;

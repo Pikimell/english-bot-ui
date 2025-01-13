@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import pages from '../pages/index';
 
-const { main, users, groups, posts, schedule, notification } = pages;
+const { main, users, groups, posts, schedule, notification, plans } = pages;
 
 const App = () => {
   return (
@@ -49,6 +49,11 @@ const App = () => {
           <Route path="drafts" element={<posts.DraftsPage />} />
         </Route>
         <Route path="/posts/:id" element={<posts.DetailsPage />} />
+        {/* =============================================== */}
+        <Route path="/plan" element={<plans.PlansPage />}>
+          <Route path="list" element={<plans.ListPage />} />
+          <Route path="create" element={<plans.CreatePage />} />
+        </Route>
         {/* =============================================== */}
         <Route path="*" element={<main.HomePage />} />
         {/* =============================================== */}
