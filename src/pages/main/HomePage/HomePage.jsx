@@ -6,6 +6,7 @@ import { getAllPosts } from '../../../api/postService';
 import { setPosts } from '../../../redux/posts/slice';
 import Loading from '../../../components/custom/Loading/Loading';
 import PostItem from '../../../components/custom/PostItem/PostItem';
+import { Empty } from 'antd';
 
 const HomePage = ({}) => {
   const dispatch = useDispatch();
@@ -29,6 +30,10 @@ const HomePage = ({}) => {
           return <PostItem item={item} key={item._id} />;
         })}
       </ul>
+
+      {posts.length === 0 && (
+        <Empty description="На жаль покищо постів немає!" />
+      )}
     </div>
   );
 };
