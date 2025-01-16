@@ -15,7 +15,7 @@ const SchedulePage = () => {
 
   return (
     <div className={style.page + ' page'}>
-      <Flex gap="5px">
+      <Flex gap="5px" align="center">
         <BackButton />
         <ScheduleMenu />
       </Flex>

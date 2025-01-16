@@ -1,0 +1,63 @@
+.container {
+  padding: 20px;
+  color: #ffffff; /* Білий текст */
+  border-radius: 10px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem; /* Відступ між елементами */
+  margin-bottom: 20px;
+}
+
+.filters .ant-picker,
+.filters .ant-select {
+  border-radius: 5px;
+  background-color: #1e1e1e; /* Темний фон інпутів */
+  border: 1px solid #333; /* Сіра рамка */
+  color: #ffffff; /* Білий текст */
+}
+
+.filters .ant-picker input,
+.filters .ant-select-selector {
+  color: #ffffff; /* Білий текст */
+}
+
+.filters .ant-picker:hover,
+.filters .ant-select:hover {
+  border-color: #4caf50; /* Світло-зелена рамка при наведенні */
+}
+
+.filters .ant-picker-focused,
+.filters .ant-select-focused {
+  border-color: #4caf50; /* Світло-зелена рамка при фокусі */
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+.chartContainer {
+  height: 400px;
+  width: 100%;
+  background-color: #1e1e1e; /* Темний фон для графіка */
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chartContainer canvas {
+  background-color: transparent; /* Прозорий фон для графіка */
+}
+
+.emptyState {
+  text-align: center;
+  color: #cccccc; /* Сірий текст для порожнього стану */
+  font-size: 1.2rem;
+  margin-top: 50px;
+}
+
+.emptyState .ant-empty-description {
+  color: #cccccc;
+}

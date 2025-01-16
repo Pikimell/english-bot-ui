@@ -58,3 +58,9 @@ export function getName(user) {
   const last_name = user?.contactInfo.last_name || '-';
   return `@${username}: ${first_name} ${last_name}`;
 }
+
+export function getShortName(user) {
+  const first_name = user?.contactInfo.first_name;
+  const last_name = user?.contactInfo.last_name;
+  return first_name || last_name || user?.userId || 'Anonym';
+}

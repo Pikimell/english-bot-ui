@@ -1,0 +1,23 @@
+.container {
+  padding: 20px;
+}
+.total {
+  margin: 10px 0;
+}
+.filters {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chartContainer {
+  height: 400px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.charts {
+  margin-top: 20px;
+}

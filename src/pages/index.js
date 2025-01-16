@@ -56,6 +56,11 @@ export default {
       import('./schedule/SchedulePage/SchedulePage.jsx'),
     ),
   },
+  statistic: {
+    StatisticPage: lazy(() =>
+      import('./statistics/StatisticPage/StatisticPage.jsx'),
+    ),
+  },
   users: {
     DebtorsPage: lazy(() => import('./users/DebtorsPage/DebtorsPage.jsx')),
     ListPage: lazy(() => import('./users/ListPage/ListPage.jsx')),

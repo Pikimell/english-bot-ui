@@ -8,7 +8,7 @@ import { Flex } from 'antd';
 const UsersPage = ({}) => {
   return (
     <div className={style.page + ' page'}>
-      <Flex gap="5px">
+      <Flex gap="5px" align="center">
         <BackButton />
         <UsersNavigation />
       </Flex>

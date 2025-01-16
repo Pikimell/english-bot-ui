@@ -7,7 +7,7 @@ import BackButton from '../../../components/custom/BackButton/BackButton';
 const GroupsPage = ({}) => {
   return (
     <div className={style.page + ' page'}>
-      <Flex gap="5px">
+      <Flex gap="5px" align="center">
         <BackButton />
         <GroupsNavigation />
       </Flex>

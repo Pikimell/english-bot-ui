@@ -7,7 +7,7 @@ import PlansNavigation from '../../../components/plans/PlansNavigation/PlansNavi
 const PlansPage = () => {
   return (
     <div className={style.page + ' page'}>
-      <Flex gap="5px">
+      <Flex gap="5px" align="center">
         <BackButton />
         <PlansNavigation />
       </Flex>

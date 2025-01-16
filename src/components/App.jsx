@@ -2,7 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import pages from '../pages/index';
 
-const { main, users, groups, posts, schedule, notification, plans } = pages;
+const { main, users, groups, posts, schedule, notification, plans, statistic } =
+  pages;
 
 const App = () => {
   return (
@@ -54,6 +55,10 @@ const App = () => {
           <Route path="list" element={<plans.ListPage />} />
           <Route path="create" element={<plans.CreatePage />} />
         </Route>
+        {/* =============================================== */}
+        <Route path="statistics" element={<statistic.StatisticPage />} />
+        {/* =============================================== */}
+
         {/* =============================================== */}
         <Route path="*" element={<main.HomePage />} />
         {/* =============================================== */}

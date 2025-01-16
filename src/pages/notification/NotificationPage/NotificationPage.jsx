@@ -7,7 +7,7 @@ import NotificationMenu from '../../../components/notification/NotificationMenu/
 const NotificationPage = () => {
   return (
     <div className={style.page + ' page'}>
-      <Flex gap="5px">
+      <Flex gap="5px" align="center">
         <BackButton />
         <NotificationMenu />
       </Flex>
