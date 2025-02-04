@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import style from './AlertPage.module.css';
 
 import { sendMessage } from '../../../api/telegramService';
@@ -8,8 +8,10 @@ import TextArea from 'antd/es/input/TextArea';
 
 import UserSelector from '../../../components/custom/UserSelector/UserSelector';
 import toast from 'react-hot-toast';
+import FormatMessage from '../../../components/notification/FormatMessage/FormatMessage';
 
 const AlertPage = () => {
+  const inputRef = useRef();
   const [user, setUser] = useState();
   const [messageText, setMessageText] = useState('');
 
@@ -42,12 +44,18 @@ const AlertPage = () => {
   return (
     <Flex gap="10px" vertical align="center" style={{ width: '100%' }}>
       <UserSelector onChange={handleUserSelect} value={user} />
+      <FormatMessage
+        input={inputRef}
+        value={messageText}
+        onChange={setMessageText}
+      />
       <TextArea
         value={messageText}
         onChange={e => setMessageText(e.target.value)}
         placeholder="Введіть текст повідомлення"
         rows={4}
         style={{ marginBottom: '20px' }}
+        ref={inputRef}
       />
       <Button
         type="primary"

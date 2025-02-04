@@ -1,14 +1,16 @@
 import { Button, Flex } from 'antd';
 import style from './HomeworkPage.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TextArea from 'antd/es/input/TextArea';
 import GroupSelector from '../../../components/custom/GroupSelector/GroupSelector';
 import { sendMessage } from '../../../api/telegramService';
 import { getAllUsers } from '../../../api/userService';
 import toast from 'react-hot-toast';
 import { useSearchParams } from 'react-router-dom';
+import FormatMessage from '../../../components/notification/FormatMessage/FormatMessage';
 
 const HomeworkPage = () => {
+  const inputRef = useRef();
   const [params] = useSearchParams();
   const [group, setGroup] = useState();
   const [users, setUsers] = useState([]);
@@ -59,12 +61,18 @@ const HomeworkPage = () => {
   return (
     <Flex gap="20px" vertical align="center" style={{ width: '100%' }}>
       <GroupSelector onChange={handleGroupSelect} value={group} />
+      <FormatMessage
+        input={inputRef}
+        value={messageText}
+        onChange={setMessageText}
+      />
       <TextArea
         value={messageText}
         onChange={e => setMessageText(e.target.value)}
         placeholder="Введіть текст повідомлення"
         rows={4}
         style={{ marginBottom: '20px' }}
+        ref={inputRef}
       />
       {!!users.length && (
         <ul className={style.list}>
