@@ -1,7 +1,10 @@
 import { useParams } from 'react-router-dom';
 import style from './SchedulePage.module.css';
 import { useEffect, useState } from 'react';
-import { getGroupById, updateGroupById } from '../../../api/groupService';
+import {
+  getGroupById,
+  updateGroupScheduleById,
+} from '../../../api/groupService';
 import { Button, Flex, List } from 'antd';
 import DaySelector from '../../../components/custom/DaySelector/DaySelector';
 import TimeSelector from '../../../components/custom/TimeSelector/TimeSelector';
@@ -41,7 +44,7 @@ const SchedulePage = () => {
     });
 
     const updatedGroup = { ...group, schedule: newSchedule };
-    const promise = updateGroupById(id, updatedGroup);
+    const promise = updateGroupScheduleById(id, updatedGroup);
     toast
       .promise(promise, {
         loading: 'Видаляємо з розкладу...',
@@ -70,7 +73,7 @@ const SchedulePage = () => {
       });
 
     const updatedGroup = { ...group, schedule: newSchedule };
-    const promise = updateGroupById(id, updatedGroup);
+    const promise = updateGroupScheduleById(id, updatedGroup);
     toast
       .promise(promise, {
         loading: 'Додаємо у розклад...',

@@ -25,6 +25,10 @@ export const updateGroupById = async (id, groupData) => {
   const res = await axios.put(`${BASE_URL}/groups/${id}`, groupData);
   return res.data;
 };
+export const updateGroupScheduleById = async (id, groupData) => {
+  const res = await axios.put(`${BASE_URL}/groups/${id}/schedule`, groupData);
+  return res.data;
+};
 
 export const deleteGroupById = async id => {
   const res = await axios.delete(`${BASE_URL}/groups/${id}`);
