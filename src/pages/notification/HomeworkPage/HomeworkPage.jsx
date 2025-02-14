@@ -15,6 +15,7 @@ const HomeworkPage = () => {
   const [group, setGroup] = useState();
   const [users, setUsers] = useState([]);
   const [messageText, setMessageText] = useState('');
+  const [isHomework, setIsHomework] = useState(false);
   const groupId = params.get('groupId');
   useEffect(() => {
     if (groupId && groupId !== 'none') {
@@ -38,10 +39,12 @@ const HomeworkPage = () => {
       return;
     }
 
+    const homeworkMsg = '\n\n#homework';
+
     for (const user of users) {
       const message = {
         chatId: user.userId,
-        message: messageText,
+        message: messageText + (isHomework ? homeworkMsg : ''),
         parse_mode: 'HTML',
       };
       sendMessage(message).then(() => {
@@ -66,6 +69,14 @@ const HomeworkPage = () => {
         value={messageText}
         onChange={setMessageText}
       />
+      <Flex>
+        <input
+          type="checkbox"
+          checked={isHomework}
+          onChange={() => setIsHomework(!isHomework)}
+        />
+        <p>Це домашка</p>
+      </Flex>
       <TextArea
         value={messageText}
         onChange={e => setMessageText(e.target.value)}
