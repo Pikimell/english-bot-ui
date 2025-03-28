@@ -37,9 +37,8 @@ export const sliceLessons = createSlice({
       state.schedule[lesson.day].push(lesson.time);
     },
     removeSchedule(state, { payload: lesson }) {
-      state.schedule[lesson.day] = state.schedule[lesson.day].filter(
-        el => el !== lesson.time,
-      );
+      state.schedule[lesson.day] =
+        state.schedule[lesson.day]?.filter(el => el !== lesson.time) || [];
     },
   },
 
