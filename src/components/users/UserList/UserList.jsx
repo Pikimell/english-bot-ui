@@ -1,7 +1,5 @@
 import { List } from 'antd';
 import style from './UserList.module.css';
-import { useEffect, useState } from 'react';
-import { getAllUsers } from '../../../api/userService';
 import UserItem from './UserItem/UserItem';
 import { useSelector } from 'react-redux';
 import { selectUsers } from '../../../redux/users/selector';

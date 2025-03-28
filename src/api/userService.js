@@ -34,7 +34,7 @@ export const deleteUser = async id => {
 };
 
 export const getAllUsers = async (params = {}) => {
-  params.limit = 500;
+  params.perPage = 500;
   const res = await axios.get(`${BASE_URL}/users`, { params });
   return res.data.data;
 };

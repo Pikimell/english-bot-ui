@@ -7,11 +7,29 @@
 }
 
 .header {
+  position: relative;
   font-size: xx-large;
   display: flex;
   align-items: center;
   border-bottom: 2px solid var(--primary-color);
   cursor: pointer;
+}
+
+.header:hover p {
+  color: transparent;
+}
+
+.header:hover::before {
+  position: absolute;
+  content: 'REMOVE';
+  color: red;
+  font-size: 18px;
+  margin: 0;
+  padding: 0;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-70%, -50%);
 }
 
 .header > p {

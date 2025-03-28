@@ -1,8 +1,10 @@
-export const ADMINS = ['433982686', '5103686914'];
+export const ADMINS = ['433982686']; //'5103686914'
 export const SELECT_USER = '433982686';
 
-export const SERVER_URL =
-  'https://ab7dxlro9f.execute-api.us-east-2.amazonaws.com/dev';
+// export const SERVER_URL =
+//   'https://ab7dxlro9f.execute-api.us-east-2.amazonaws.com/dev';
+
+export const SERVER_URL = 'http://localhost:3000/dev';
 
 export const days = {
   Нд: 0,

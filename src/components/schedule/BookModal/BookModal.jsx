@@ -3,22 +3,16 @@ import DaySelector from '../../custom/DaySelector/DaySelector';
 import GroupSelector from '../../custom/GroupSelector/GroupSelector';
 import TimeSelector from '../../custom/TimeSelector/TimeSelector';
 import style from './BookModal.module.css';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
+import { addReminder } from '../../../api/reminderService';
+import toast from 'react-hot-toast';
 
 const BookModal = ({ close }) => {
   const [group, setGroup] = useState();
   const [date, setDate] = useState();
-  const [day, setDay] = useState();
   const [time, setTime] = useState();
   const startDate = new Date();
-
-  useEffect(() => {
-    if (date) {
-      const userDate = new Date(date);
-      setDay(userDate.getDay());
-    }
-  }, [date]);
 
   const handleClose = e => {
     if (e.target === e.currentTarget) close();
@@ -26,12 +20,19 @@ const BookModal = ({ close }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (!group || !(day >= 0) || !time) {
+    if (!group || !date || !time) {
       return;
     }
 
-    console.log(group, day, time);
+    const promise = addReminder({ groupId: group, date, time });
+    toast
+      .promise(promise, {
+        loading: 'Зберігаємо данні...',
+        success: 'Запис додано!',
+      })
+      .then(close);
   };
+
   return (
     <div className={style.backdrop} onClick={handleClose}>
       <div className={style.modal}>

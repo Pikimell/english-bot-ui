@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import style from './SchedulePage.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import {
   getGroupById,
   updateGroupScheduleById,
@@ -12,22 +12,25 @@ import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { updateGroup } from '../../../redux/groups/slice';
 import { days, daysLabel } from '../../../helpers/constants';
-import { v4 as getId } from 'uuid';
 import { parseTime } from '../../../helpers/convertData';
 import { addSchedule, removeSchedule } from '../../../redux/lessons/slice';
+import {
+  addReminder,
+  getAllReminders,
+  removeReminder,
+} from '../../../api/reminderService';
 
 const SchedulePage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const [group, setGroup] = useState({});
-  const schedule = group.schedule || [];
+  const [schedule, setSchedule] = useState([]);
 
   const [day, setDay] = useState();
   const [time, setTime] = useState();
 
   useEffect(() => {
     if (!id) return;
-    getGroupById(id).then(setGroup);
+    getAllReminders({ groupId: id }).then(setSchedule);
   }, [id]);
 
   const handleChangeDay = key => {
@@ -38,13 +41,8 @@ const SchedulePage = () => {
     setTime(key);
   };
 
-  const handleRemoveSchedule = (day, time) => {
-    const newSchedule = schedule.filter(el => {
-      return el.day !== day || el.time !== time;
-    });
-
-    const updatedGroup = { ...group, schedule: newSchedule };
-    const promise = updateGroupScheduleById(id, updatedGroup);
+  const handleRemoveSchedule = id => {
+    const promise = removeReminder(id);
     toast
       .promise(promise, {
         loading: 'Видаляємо з розкладу...',
@@ -52,10 +50,10 @@ const SchedulePage = () => {
         error: 'Упс! Щось пішло не так(',
       })
       .then(() => {
-        dispatch(updateGroup({ _id: id, data: updatedGroup }));
-        setGroup(updatedGroup);
+        const copy = schedule.filter(el => el._id !== id);
+        setSchedule(copy);
       });
-    dispatch(removeSchedule({ day, time }));
+    dispatch(removeSchedule(id));
   };
 
   const handleAddSchedule = () => {
@@ -64,35 +62,39 @@ const SchedulePage = () => {
       return;
     }
 
-    const newSchedule = [...schedule, { day, time, id: getId() }]
-      .sort((a, b) => {
-        return parseInt(a.time) - parseInt(b.time);
-      })
-      .sort((a, b) => {
-        return days[a.day] - days[b.day];
-      });
-
-    const updatedGroup = { ...group, schedule: newSchedule };
-    const promise = updateGroupScheduleById(id, updatedGroup);
+    const promise = addReminder({ groupId: id, day, time });
     toast
       .promise(promise, {
         loading: 'Додаємо у розклад...',
         success: 'Успішно додано!',
         error: 'Щось пішло не так(',
       })
-      .then(() => {
-        dispatch(updateGroup({ _id: id, data: updatedGroup }));
-        setGroup(updatedGroup);
+      .then(data => {
+        const copy = [...schedule, data].toSorted((a, b) => {
+          const day1 = days[a.day] || 0;
+          const day2 = days[b.day] || 0;
+          if (day1 !== day2) return day1 - day2;
+
+          const time1 = parseInt(a.time.replace(':', ''));
+          const time2 = parseInt(b.time.replace(':', ''));
+          return time1 - time2;
+        });
+        setSchedule(copy);
       });
     dispatch(addSchedule({ day, time }));
     setTime();
     setDay();
   };
+
+  const filteredSchedule = useMemo(() => {
+    return schedule.filter(a => a.day);
+  }, [schedule]);
+
   return (
     <div className={style.container}>
       <List
         header="Розклад заннятть"
-        dataSource={schedule}
+        dataSource={filteredSchedule}
         bordered
         renderItem={el => {
           return (
@@ -104,7 +106,7 @@ const SchedulePage = () => {
               >
                 <div>{daysLabel[el.day]}</div>
                 <div>{parseTime(el.time)}:00</div>
-                <Button onClick={() => handleRemoveSchedule(el.day, el.time)}>
+                <Button onClick={() => handleRemoveSchedule(el._id)}>
                   Видалити
                 </Button>
               </Flex>
@@ -113,9 +115,10 @@ const SchedulePage = () => {
         }}
       />
       <div className={style.form}>
-        <DaySelector onChange={handleChangeDay} />
+        <DaySelector onChange={handleChangeDay} value={day} />
         <TimeSelector
           day={day}
+          value={time}
           onChange={handleChangeTime}
           disabled={Boolean(!day)}
         />
