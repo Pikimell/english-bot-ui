@@ -1,4 +1,4 @@
-export const ADMINS = ['5103686914']; //'433982686'
+export const ADMINS = ['5103686914', '433982686']; //'433982686'
 export const SELECT_USER = '';
 
 export const SERVER_URL =
