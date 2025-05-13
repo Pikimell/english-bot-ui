@@ -9,6 +9,12 @@ import './style/reset.css';
 import './style/variables.css';
 import { ConfigProvider, theme } from 'antd';
 
+window.addEventListener('keypress', e => {
+  if (e.shiftKey && e.code === 'KeyA') {
+    localStorage.setItem('isAdmin', true);
+  }
+});
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>

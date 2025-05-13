@@ -41,6 +41,7 @@ export function getUserId() {
 export function isAdmin() {
   const id = getUserId();
   const admin = localStorage.getItem('isAdmin');
+
   return ADMINS.includes(`${id}`) || admin;
 }
 
