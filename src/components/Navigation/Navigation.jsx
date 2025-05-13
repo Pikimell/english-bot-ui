@@ -5,6 +5,8 @@ import { useState } from 'react';
 
 const Navigation = ({}) => {
   const hasAccess = isAdmin();
+  console.log(hasAccess);
+
   return (
     <nav className={style.navigation}>
       <NavLink to="/">Пости</NavLink>
