@@ -22,7 +22,7 @@ const VisitPage = () => {
         ...lesson,
         user,
         group,
-        userName: user.contactInfo.first_name,
+        userName: user?.contactInfo?.first_name,
         date: date2str(date),
         time: time2str(date),
       };

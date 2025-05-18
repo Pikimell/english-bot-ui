@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import style from './AdminMenu.module.css';
-import { useState } from 'react';
+
 const items = [
   { title: 'Пости', link: '/posts/list' },
   { title: 'Групи', link: '/groups/list' },
@@ -11,7 +11,7 @@ const items = [
   { title: 'Статистика', link: '/statistics' },
 ];
 
-const AdminMenu = ({}) => {
+const AdminMenu = () => {
   const navigate = useNavigate();
   const handleClick = link => {
     navigate(link);
