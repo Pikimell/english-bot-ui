@@ -39,7 +39,7 @@ const OtherInfo = () => {
 
   return (
     <div className={style.container}>
-      <h2>Statistics</h2>
+      <h2>Статистика</h2>
       <div className={style.chartGrid}>
         <PaymentMethodsChart payments={payments} />
         <StudentEarningsChart payments={payments} />

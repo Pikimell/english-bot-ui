@@ -20,7 +20,7 @@ const PaymentMethodsChart = ({ payments }) => {
 
   return (
     <div className={style.container}>
-      <h3>Popular Payment Methods</h3>
+      <h3>Спосіб оплати</h3>
       <Pie
         data={chartData}
         options={getThemeOptions({

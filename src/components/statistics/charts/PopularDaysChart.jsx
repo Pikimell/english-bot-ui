@@ -11,13 +11,13 @@ const PopularDaysChart = ({ lessons }) => {
 
   const chartData = {
     labels: [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
+      'Неділя',
+      'Понеділок',
+      'Вівторок',
+      'Середа',
+      'Четвер',
+      'Пятниця',
+      'Субота',
     ],
     datasets: [
       {
@@ -37,7 +37,7 @@ const PopularDaysChart = ({ lessons }) => {
 
   return (
     <div className={style.container}>
-      <h3>Popular Days</h3>
+      <h3>Завантаженість днів</h3>
       <Pie
         data={chartData}
         options={getThemeOptions({

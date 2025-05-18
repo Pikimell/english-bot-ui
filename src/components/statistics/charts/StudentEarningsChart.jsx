@@ -9,7 +9,7 @@ const StudentEarningsChart = ({ payments }) => {
   }, {});
 
   const chartData = {
-    labels: Object.keys(data).map(userId => `Student ${userId}`),
+    labels: Object.keys(data).map(userId => `Стдудент ${userId}`),
     datasets: [
       {
         data: Object.values(data),
@@ -26,7 +26,7 @@ const StudentEarningsChart = ({ payments }) => {
 
   return (
     <div className={style.container}>
-      <h3>Income by Student</h3>
+      <h3>Надходження</h3>
       <Pie
         data={chartData}
         options={getThemeOptions({
